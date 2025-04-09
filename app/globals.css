@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* styles.css or globals.css */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adds spacing between elements */
+  height: 100%;
+}
+
+.editor-container {
+  height: 600px; /* Fixed height for the editor */
+  overflow: auto; /* Makes the editor scrollable */
+  border: 1px solid #e5e7eb; /* Optional: Adds a border */
+  border-radius: 0.5rem; /* Optional: Rounds the corners */
+  padding: 16px; /* Optional: Adds padding inside the editor container */
+}
+
+.json-container {
+  height: 300px; /* Fixed height for the JSON container */
+  overflow: auto; /* Makes the JSON container scrollable */
+  border: 1px solid #e5e7eb; /* Optional: Adds a border */
+  border-radius: 0.5rem; /* Optional: Rounds the corners */
+  padding: 16px; /* Optional: Adds padding inside the JSON container */
+}
+
+.json-container pre {
+  margin: 0; /* Removes default margin */
+  white-space: pre-wrap; /* Ensures JSON wraps properly */
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
