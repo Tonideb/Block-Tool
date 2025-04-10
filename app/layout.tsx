@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { HeroUIProvider } from "@heroui/react";
+// import { HeroUIProvider } from "@heroui/react";
 import "./globals.css";
 import NavbarMain from "./components/Navbar";
 
@@ -29,9 +29,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <HeroUIProvider>
+        {/* <HeroUIProvider> */}
+          <div className="px-8 py-4">
           <NavbarMain/>
-          {children}</HeroUIProvider>
+          {children}
+          </div>
+          {/* </HeroUIProvider> */}
       </body>
     </html>
   );
