@@ -9,10 +9,17 @@ interface BlogPost {
 }
 
 async function fetchBlogPosts(): Promise<BlogPost[]> {
-  const res = await fetch('http://localhost:3005/posts');
+  const res = await fetch('https://expressjs-prisma-production-4ab3.up.railway.app/posts', {
+    cache: 'no-store', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
   if (!res.ok) {
-    throw new Error('Failed to fetch blog posts');
+    throw new Error(`Failed to fetch blog posts (HTTP ${res.status})`);
   }
+
   return res.json();
 }
 

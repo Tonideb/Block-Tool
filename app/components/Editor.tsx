@@ -19,8 +19,9 @@ export default function Editor() {
     try {
       const content = await editor.document;
       
-      const response = await fetch("http://localhost:3005/posts", {
+      const response = await fetch("https://expressjs-prisma-production-4ab3.up.railway.app/posts", {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
