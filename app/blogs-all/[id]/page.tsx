@@ -29,7 +29,18 @@ interface BlogPost {
 }
 
 async function fetchBlogPost(id: number): Promise<BlogPost> {
-  const res = await fetch(`http://localhost:3005/posts/${id}`);
+  const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  if (!apiUrl) {
+    throw new Error("API base URL is not configured");
+  }
+
+  const res = await fetch(`${apiUrl}/posts/${id}`, {
+    cache: 'no-store',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
   if (!res.ok) {
     throw new Error("Failed to fetch blog post");
   }

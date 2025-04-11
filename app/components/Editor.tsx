@@ -19,7 +19,13 @@ export default function Editor() {
     try {
       const content = await editor.document;
       
-      const response = await fetch("https://expressjs-prisma-production-4ab3.up.railway.app/posts", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+      if (!apiUrl) {
+        throw new Error("API base URL is not configured");
+      }
+
+      const response = await fetch(`${apiUrl}/posts`, {
         method: "POST",
         mode: "cors",
         headers: {

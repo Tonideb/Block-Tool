@@ -9,8 +9,13 @@ interface BlogPost {
 }
 
 async function fetchBlogPosts(): Promise<BlogPost[]> {
-  const res = await fetch('https://expressjs-prisma-production-4ab3.up.railway.app/posts', {
-    cache: 'no-store', 
+  const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  if (!apiUrl) {
+    throw new Error('API base URL is not configured');
+  }
+
+  const res = await fetch(`${apiUrl}/posts`, {
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
     },
